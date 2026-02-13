@@ -2,7 +2,6 @@
 .godot/
 .import/
 export.cfg
-export_presets.cfg
 
 # Imported resources (used in Godot 2.x and 3.x)
 *.import
