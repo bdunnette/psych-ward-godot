@@ -4,14 +4,17 @@ extends CanvasLayer
 @onready var rep_label = $Control/HBoxContainer/Reputation
 @onready var log_list = $Control/LogPanel/VBoxContainer
 
+
 func _ready():
 	GameManager.connect("stats_changed", _on_stats_changed)
 	GameManager.connect("log_added", _on_log_added)
 	_on_stats_changed(GameManager.funds, GameManager.reputation)
 
+
 func _on_stats_changed(funds, reputation):
 	funds_label.text = "Funds: $" + str(round(funds))
 	rep_label.text = "Reputation: " + str(round(reputation)) + "%"
+
 
 func _on_log_added(msg):
 	var label = Label.new()
@@ -22,8 +25,10 @@ func _on_log_added(msg):
 	if log_list.get_child_count() > 10:
 		log_list.get_child(0).queue_free()
 
+
 func _on_admit_pressed():
 	GameManager.admit_patient()
+
 
 func _on_hire_pressed():
 	GameManager.hire_staff()
